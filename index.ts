@@ -19,7 +19,7 @@ const spinner = ora();
 
 let diff = "";
 try {
-  diff = execSync("git diff --cached ':!package-lock.json'").toString();
+  diff = execSync("git diff -- . ':!package-lock.json'").toString();
   if (!diff) {
     console.log("No changes to commit.");
     process.exit(0);
@@ -55,7 +55,6 @@ async function run(diff: string) {
   while (true) {
     debug("prompt: ", prompt);
 
-    execSync("git add .", { stdio: "inherit" });
     const choices = await getMessages(api, prompt);
 
     try {
@@ -70,7 +69,7 @@ async function run(diff: string) {
         execSync("git commit", { stdio: "inherit" });
         return;
       } else {
-        execSync(`git commit -m '${escapeCommitMessage(answer.message)}'`, {
+        execSync(`git commit -am '${escapeCommitMessage(answer.message)}'`, {
           stdio: "inherit",
         });
         return;
