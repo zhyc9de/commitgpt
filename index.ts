@@ -54,6 +54,8 @@ async function run(diff: string) {
 
   while (true) {
     debug("prompt: ", prompt);
+
+    execSync("git add .", { stdio: "inherit" });
     const choices = await getMessages(api, prompt);
 
     try {

@@ -20,10 +20,10 @@ you can create `.commitgpt.json` and/or `.commitgpt-template` config files in yo
 default: 
 ```json
 {
-  "model": "text-davinci-003",
-  "temperature": 0.5,
+  "model": "gpt-4-32k",
+  "temperature": 0.7,
   "maxTokens": 2048,
-  "locale": "chinese"
+  "locale": "english"
 }
 ```
 this file can be used to change the openai model and other parameters.
