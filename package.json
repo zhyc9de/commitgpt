@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/RomanHotsiy/commitgpt#readme",
   "dependencies": {
+    "@azure/openai": "^1.0.0-beta.12",
     "enquirer": "^2.3.6",
     "openai": "^3.2.1",
     "ora": "^6.1.2",

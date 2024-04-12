@@ -27,6 +27,12 @@ default:
 ```
 this file can be used to change the openai model and other parameters.
 
+If you want to use Azure:
+```json
+{
+  "basePath": "https://<YOUR_RESOURCE_NAME>.openai.azure.com"
+}
+```
 
 ### `.commitgpt-template` file
 default:

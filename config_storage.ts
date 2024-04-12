@@ -9,6 +9,7 @@ const GLOBAL_PROMPT_TEMPLATE_PATH = `${homedir()}/.commitgpt-template`;
 const LOCAL_PROMPT_TEMPLATE_PATH = `${process.cwd()}/.commitgpt-template`;
 
 interface Config {
+  basePath?: string; // support for azure
   apiKey?: string;
   promptTemplate?: string;
   model: string;
