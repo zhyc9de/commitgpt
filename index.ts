@@ -6,6 +6,7 @@ import ora from "ora";
 
 import { ChatGPTClient } from "./client.js";
 import { loadPromptTemplate } from "./config_storage.js";
+import { getConfig } from "./config_storage.js";
 
 const debug = (...args: unknown[]) => {
   if (process.env.DEBUG) {
@@ -18,7 +19,7 @@ const spinner = ora();
 
 let diff = "";
 try {
-  diff = execSync("git diff --cached").toString();
+  diff = execSync("git diff --cached ':!package-lock.json'").toString();
   if (!diff) {
     console.log("No changes to commit.");
     process.exit(0);
@@ -47,10 +48,9 @@ async function run(diff: string) {
 
   const api = new ChatGPTClient();
 
-  const prompt = loadPromptTemplate().replace(
-    "{{diff}}",
-    ["```", diff, "```"].join("\n")
-  );
+  const prompt = loadPromptTemplate()
+    .replace("{{diff}}", ["```", diff, "```"].join("\n"))
+    .replace("{{locale}}", getConfig("locale") || "english");
 
   while (true) {
     debug("prompt: ", prompt);

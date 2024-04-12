@@ -15,6 +15,7 @@ interface Config {
   model: string;
   temperature: number;
   maxTokens: number;
+  locale?: string;
 }
 
 const defaultConfig = {

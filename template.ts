@@ -1,13 +1,15 @@
 export const defaultPromptTemplate = [
-  "suggest 10 commit messages based on the following diff:",
-  "{{diff}}",
+  "Write 4 commit message in the conventional commit convention.",
   "",
   "commit messages should:",
   " - follow conventional commits",
-  " - message format should be: <type>[scope]: <description>",
-
+  " - message format should be: <type>[optional scope]: <description>",
+  " - description use {{locale}} language",
+  " - contains most changes",
   "",
   "examples:",
   " - fix(authentication): add password regex pattern",
   " - feat(storage): add new test cases",
+  "",
+  "{{diff}}",
 ].join("\n");

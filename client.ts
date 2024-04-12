@@ -16,18 +16,23 @@ if (basePath?.includes("azure")) {
 } else {
   openai = new OpenAIClient(new OpenAIKeyCredential(apiKey));
 }
-console.log('测试下',basePath,apiKey)
 
 export class ChatGPTClient {
   async getAnswer(question: string): Promise<string> {
     const { model, maxTokens, temperature } = await getPromptOptions();
 
     try {
-      const result = await openai.getCompletions(model, [question], {
+      const prompt = [
+        {
+          role: "system",
+          content: question,
+        },
+      ];
+      const result = await openai.getChatCompletions(model, prompt, {
         maxTokens,
         temperature,
       });
-      return result.choices[0].text;
+      return result.choices[0].message.content;
     } catch (e) {
       console.error(e?.response ?? e);
       throw e;
