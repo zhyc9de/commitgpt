@@ -23,6 +23,7 @@ default:
   "model": "text-davinci-003",
   "temperature": 0.5,
   "maxTokens": 2048,
+  "locale": "chinese"
 }
 ```
 this file can be used to change the openai model and other parameters.
