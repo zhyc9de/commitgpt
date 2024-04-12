@@ -10,6 +10,18 @@ Automatically generate commit messages using ChatGPT.
 npx commitgpt
 ```
 
+## Local install
+
+```bash
+npm i
+npm run build
+npm link
+
+# now you can use it
+cd worksapce
+commitgpt
+```
+
 ### Get OpenAI api key
 https://platform.openai.com/account/api-keys
 
